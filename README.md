@@ -10,9 +10,24 @@ To write a C Program to find area of rectangle using pointer.
 5.	Stop the program.
 
 ## PROGRAM
+```
+#include <stdio.h>
+int main() {
+    float length, breadth, area;
+    float *ptr_length = &length;
+    float *ptr_breadth = &breadth;
+    scanf("%f", ptr_length);
+    scanf("%f", ptr_breadth);
+    area = (*ptr_length) * (*ptr_breadth);
+    printf("Area of the rectangle = %.2f\n", area);
+    return 0;
+}
 
+```
 ## OUTPUT
-		       	
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/be1f3506-002c-4d2b-98bf-e8241b41af11" />
+
 
 
 ## RESULT
@@ -34,8 +49,25 @@ To write a C Program to print 'WELCOME' using malloc() and free().
 6.	Stop the program.
 
 ## PROGRAM
-
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int main() {
+    char *str;
+    str = (char *)malloc(8 * sizeof(char)); 
+    if(str == NULL) {
+        printf("Memory allocation failed.\n");
+        return 1;
+    }
+    strcpy(str, "WELCOME");
+    printf("%s\n", str);
+    free(str);
+    return 0;
+}
+```
 ## OUTPUT
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8c561455-4d97-4833-a507-cb97df6a8f77" />
 
 
 
@@ -60,9 +92,28 @@ To write a C Program to store the student information and display it using struc
 4.	Stop the program.
 
 ## PROGRAM
-
+```
+#include <stdio.h>
+struct Student {
+    char name[50];
+    int roll;
+    float marks;
+};
+int main() {
+    struct Student s;
+    scanf(" %[^\n]", s.name); 
+    scanf("%d", &s.roll);
+    scanf("%f", &s.marks);
+    printf("\nStudent Information:\n");
+    printf("Name: %s\n", s.name);
+    printf("Roll Number: %d\n", s.roll);
+    printf("Marks: %.2f\n", s.marks);
+    return 0;
+}
+```
 
 ## OUTPUT
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a0b26e91-c0d1-41a5-b66c-1acf029548af" />
 
 
 ## RESULT
@@ -87,9 +138,44 @@ To write a C Program to read and store the data of 3 employees and calculate the
 5.	Stop the program.
 
 ## PROGRAM
-
+```
+#include <stdio.h>
+struct Employee {
+    char name[50];
+    int id;
+    float basic, hra, da, gross;
+};
+int main() {
+    struct Employee emp[3];
+    int i;
+    for(i = 0; i < 3; i++) {
+        printf("Enter details for Employee %d:\n", i + 1);
+        scanf(" %[^\n]", emp[i].name);
+        scanf("%d", &emp[i].id);
+        scanf("%f", &emp[i].basic);
+        scanf("%f", &emp[i].hra);
+        scanf("%f", &emp[i].da);
+        emp[i].gross = emp[i].basic + emp[i].hra + emp[i].da;
+        printf("\n");
+    }
+    printf("Employee Details with Gross Salary:\n");
+    for(i = 0; i < 3; i++) {
+        printf("\nEmployee %d:\n", i + 1);
+        printf("Name: %s\n", emp[i].name);
+        printf("ID: %d\n", emp[i].id);
+        printf("Basic: %.2f\n", emp[i].basic);
+        printf("HRA: %.2f\n", emp[i].hra);
+        printf("DA: %.2f\n", emp[i].da);
+        printf("Gross Salary: %.2f\n", emp[i].gross);
+    }
+    return 0;
+}
+```
 
  ## OUTPUT
+<img width="1920" height="1080" alt="Screenshot (871)" src="https://github.com/user-attachments/assets/b7df1d7b-833e-4a18-aeab-51becc020f47" />
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/7ab2e0ab-5800-45c6-b503-5f57afb32e79" />
 
  
 
@@ -134,9 +220,38 @@ Step 7: Output Loop (i = 0 to 1):
 Step 8: End the program.
 
 ## PROGRAM
-
+```
+#include <stdio.h>
+struct Student {
+    char name[10];
+    int rollno;
+    int subject[5];
+    int total;
+    float average;
+};
+int main() {
+    struct Student s[2];
+    int i, j;
+    for(i = 0; i < 2; i++) {
+        printf("Enter marks for Student %d (5 subjects):\n", i + 1);
+        s[i].total = 0;
+        for(j = 0; j < 5; j++) {
+            scanf("%d", &s[i].subject[j]);
+            s[i].total += s[i].subject[j];
+        }
+        s[i].average = s[i].total / 5.0;
+        printf("\n");
+    }
+    for(i = 0; i < 2; i++) {
+        printf("Student %d Total Marks: %d\n", i + 1, s[i].total);
+        printf("Student %d Average Marks: %.2f\n\n", i + 1, s[i].average);
+    }
+    return 0;
+}
+```
 
 ## OUTPUT
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/43d79832-2730-40eb-b590-409474f1b603" />
 
  
 
